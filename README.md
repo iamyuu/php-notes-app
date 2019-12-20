@@ -8,10 +8,6 @@ Create and store your notes for later purpose!
 - [ ] User can edit a note
 - [ ] User can delete a note
 
-## Bonus features
-
-- [ ] User can create and edit a note in HTML format.
-
 ## Prerequisites
 
 - PHP (v7.4)
