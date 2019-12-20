@@ -11,15 +11,4 @@ $DB_OPTIONS = [
   PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
 ];
 
-try {
-  $db = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}", $DB_USER, $DB_PASS, $DB_OPTIONS);
-
-  foreach ($db->query('SELECT * from notes') as $row) {
-    print_r($row);
-  }
-
-  $db = null; # close connection
-} catch (PDOException $e) {
-  print "Error!: " . $e->getMessage() . "<br/>";
-  die();
-}
+$db = new PDO("mysql:host={$DB_HOST};dbname={$DB_NAME}", $DB_USER, $DB_PASS, $DB_OPTIONS);
