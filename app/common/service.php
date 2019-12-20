@@ -1,7 +1,5 @@
 <?php
 
-require './common/connection.php';
-
 class NoteService
 {
   private $DB_HOST = 'localhost';
@@ -15,6 +13,11 @@ class NoteService
   public function __construct()
   {
     $this->db = new PDO("mysql:host={$this->DB_HOST};dbname={$this->DB_NAME}", $this->DB_USER, $this->DB_PASS, $this->DB_OPTIONS);
+  }
+
+  public function __destruct()
+  {
+    $this->db = null;
   }
 
   public function getAll()
