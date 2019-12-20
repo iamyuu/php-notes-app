@@ -15,10 +15,10 @@ Create and store your notes for later purpose!
 ## Prerequisites
 
 - PHP (v7.4)
-- MySql (v5.7.28)
+- MariaDB (v10.4)
 
-## Start application
+## Start development mode
 
 ``` bash
-php -S localhost:9000 -t src
+php -S localhost:7000 -t app
 ```
