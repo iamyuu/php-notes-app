@@ -42,3 +42,8 @@ body {
 .input-field textarea:focus:not([readonly]) {
   border-bottom: 1px solid var(--primary);
 }
+
+.dropdown-content li > a,
+.dropdown-content li > span {
+  color: var(--primary);
+}

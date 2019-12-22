@@ -54,9 +54,25 @@ $service = new NoteService();
     <form action="actions/store-or-update.php">
       <div class="modal-content">
         <input id="id" name="id" type="hidden">
-        <div class="input-field col s12">
-          <!-- <label for="title">Title</label> -->
-          <input id="title" name="title" type="text" placeholder="Title" required>
+        <div class="row">
+          <div class="input-field col s10">
+            <!-- <label for="title">Title</label> -->
+            <input id="title" name="title" type="text" placeholder="Title" required>
+          </div>
+          <div class="input-field col s2">
+            <select name="color" id="color">
+              <option value="">White</option>
+              <option value="red darken-1">Red</option>
+              <option value="orange darken-1">Orange</option>
+              <option value="yellow darken-1">Yellow</option>
+              <option value="green darken-1">Green</option>
+              <option value="teal darken-1">Teal</option>
+              <option value="light-blue darken-1">Light Blue</option>
+              <option value="blue darken-1">Blue</option>
+              <option value="amber darken-1">Amber</option>
+            </select>
+            <!-- <label>Color</label> -->
+          </div>
         </div>
         <div class="input-field col s12">
           <!-- <label for="note">Note</label> -->

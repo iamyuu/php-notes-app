@@ -1,11 +1,15 @@
 $(document).ready(() => {
   $('.modal').modal()
+  $('select').formSelect()
 })
 
-const setForm = ({ id, title, note }) => {
+const setForm = ({ id, title, note, color }) => {
   $('#id').val(id)
   $('#note').val(note)
   $('#title').val(title)
+  $('#color').val(color).change() // fail :confused:
+  // $('#color').val(color).trigger("change") // fail :confused:
+  // $('#color').val(color).prop('selected', true) // fail :confused:
 }
 
 const add = () => {

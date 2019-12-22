@@ -10,7 +10,7 @@ Create and store your notes for later purpose!
 
 ## Bonus features
 
-- [ ] User can change background card
+- [x] ~~User can change card background color~~
 
 ## Prerequisites
 
