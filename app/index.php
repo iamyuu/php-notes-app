@@ -20,18 +20,18 @@ $service = new NoteService();
 </head>
 
 <body>
-  <div class="fixed-action-btn">
-    <button class="btn-floating btn-large primary modal-trigger" data-target="modal1">
+  <div class="fixed-action-btn" onclick="add()">
+    <button class="btn-floating btn-large primary">
       <i class="large material-icons">add</i>
     </button>
   </div>
 
   <div class="row">
-    <?php foreach ($service->getAll() as $row) : ?>
+    <?php foreach ($service->all() as $row) : ?>
       <div class="col s12 m4">
-        <div class="card z-depth-1 modal-trigger <?= $row['color'] ?>" data-target="modal1">
+        <div class="card <?= $row['color'] ?>" onclick="show(<?= $row['id'] ?>)">
           <div class="card-content <?= $row['color'] == '' ? '' : 'white-text' ?>">
-            <span class="card-title"><?= $row['title'] ?></span>
+            <span class="card-title"><?= $row['title'] ?? '' ?></span>
             <p><?= $row['note'] ?></p>
           </div>
         </div>
@@ -39,17 +39,28 @@ $service = new NoteService();
     <?php endforeach; ?>
   </div>
 
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
+  <div class="modal">
+    <form method="post">
+      <div class="modal-content">
+        <input id="id" name="id" type="hidden">
+        <div class="input-field col s12">
+          <!-- <label for="title">Title</label> -->
+          <input id="title" name="title" type="text" placeholder="Title" required>
+        </div>
+        <div class="input-field col s12">
+          <!-- <label for="note">Note</label> -->
+          <textarea id="note" name="note" class="materialize-textarea" placeholder="Note" rows="4" cols="50" required></textarea>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="waves-effect waves-light btn-flat modal-close">Cancel</button>
+        <button type="submit" class="waves-effect btn primary">Save</button>
+      </div>
+    </form>
   </div>
 
-  <script src=" https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="./static/js/app.js"></script>
 </body>
 

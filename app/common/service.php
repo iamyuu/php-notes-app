@@ -20,7 +20,7 @@ class NoteService
     $this->db = null;
   }
 
-  public function getAll()
+  public function all()
   {
     try {
       $sql = "SELECT id, title, note, color FROM notes";
@@ -28,9 +28,22 @@ class NoteService
       $statement = $this->db->prepare($sql);
       $statement->execute();
 
-      $result = $statement->fetchAll(PDO::FETCH_ASSOC);
+      return $statement->fetchAll(PDO::FETCH_ASSOC);
+    } catch (PDOException $e) {
+      echo "Error: {$e->getMessage()}";
+    }
+  }
 
-      return $result;
+  public function get($id)
+  {
+    try {
+      $sql = "SELECT id, title, note, color FROM notes WHERE id = :id";
+
+      $statement = $this->db->prepare($sql);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT);
+      $statement->execute();
+
+      return $statement->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
       echo "Error: {$e->getMessage()}";
     }
