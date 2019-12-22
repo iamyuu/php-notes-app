@@ -20,23 +20,34 @@ $service = new NoteService();
 </head>
 
 <body>
-  <div class="fixed-action-btn" onclick="add()">
-    <button class="btn-floating btn-large primary">
-      <i class="large material-icons">add</i>
-    </button>
-  </div>
-
   <div class="row">
     <?php foreach ($service->all() as $row) : ?>
+      <?php $isHaveColor = $row['color'] != '' ? 'white-text' : ''; ?>
+
       <div class="col s12 m4">
-        <div class="card <?= $row['color'] ?>" onclick="show(<?= $row['id'] ?>)">
-          <div class="card-content <?= $row['color'] == '' ? '' : 'white-text' ?>">
-            <span class="card-title"><?= $row['title'] ?? '' ?></span>
+        <div class="card <?= $row['color'] ?>">
+          <div class="card-content click-able <?= $isHaveColor ?>" onclick="show(<?= $row['id'] ?>)">
+            <div class="card-title"><?= $row['title'] ?? '' ?></div>
             <p><?= $row['note'] ?></p>
+          </div>
+          <div class="card-action">
+            <div class="click-able" onclick="remove('<?= $row['title'] ?>')">
+              <i class="material-icons <?= $isHaveColor ?>">delete</i>
+            </div>
+
+            <form class="delete-form" action="api/delete.php">
+              <input type="hidden" name="id" value="<?= $row['id'] ?>">
+            </form>
           </div>
         </div>
       </div>
     <?php endforeach; ?>
+  </div>
+
+  <div class="fixed-action-btn" onclick="add()">
+    <button class="btn-floating btn-large primary">
+      <i class="large material-icons">add</i>
+    </button>
   </div>
 
   <div class="modal">

@@ -10,16 +10,25 @@ class NoteService
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION
   ];
 
+  /**
+   * Make a connection to the resource.
+   */
   public function __construct()
   {
     $this->db = new PDO("mysql:host={$this->DB_HOST};dbname={$this->DB_NAME}", $this->DB_USER, $this->DB_PASS, $this->DB_OPTIONS);
   }
 
+  /**
+   * Close connection to the resource.
+   */
   public function __destruct()
   {
     $this->db = null;
   }
 
+  /**
+   * Get a listing of the resource.
+   */
   public function all()
   {
     try {
@@ -30,11 +39,16 @@ class NoteService
 
       return $statement->fetchAll(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-      echo "Error: {$e->getMessage()}";
+      return "Error: [all] {$e->getMessage()}";
     }
   }
 
-  public function get($id)
+  /**
+   * Get the specified resource.
+   *
+   * @param int $id
+   */
+  public function get(int $id)
   {
     try {
       $sql = "SELECT id, title, note, color FROM notes WHERE id = :id";
@@ -45,7 +59,27 @@ class NoteService
 
       return $statement->fetch(PDO::FETCH_ASSOC);
     } catch (PDOException $e) {
-      echo "Error: {$e->getMessage()}";
+      return "Error: [get] {$e->getMessage()}";
+    }
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   *
+   * @param int $id
+   */
+  public function remove(int $id)
+  {
+    try {
+      $sql = "DELETE FROM notes WHERE id = :id";
+
+      $statement = $this->db->prepare($sql);
+      $statement->bindParam(':id', $id, PDO::PARAM_INT);
+      $statement->execute();
+
+      return "Successfully deleted";
+    } catch (PDOException $e) {
+      return "Error: [remove] {$e->getMessage()}";
     }
   }
 }

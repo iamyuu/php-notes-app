@@ -19,3 +19,11 @@ const show = id => {
     $('.modal').modal('open')
   })
 }
+
+const remove = title => {
+  const answer = confirm(`Are you sure to delete ${title}?`)
+
+  if (answer) {
+    $('.delete-form').submit()
+  }
+}
