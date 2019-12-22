@@ -20,10 +20,11 @@ const show = id => {
   })
 }
 
-const remove = title => {
+const remove = (id, title) => {
   const answer = confirm(`Are you sure to delete ${title}?`)
 
   if (answer) {
+    $('.form-delete-id').val(id)
     $('.delete-form').submit()
   }
 }

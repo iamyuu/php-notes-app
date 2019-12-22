@@ -31,12 +31,12 @@ $service = new NoteService();
             <p><?= $row['note'] ?></p>
           </div>
           <div class="card-action">
-            <div class="click-able" onclick="remove('<?= $row['title'] ?>')">
+            <div class="click-able" onclick="remove(<?= $row['id'] ?>, '<?= $row['title'] ?>')">
               <i class="material-icons <?= $isHaveColor ?>">delete</i>
             </div>
 
             <form class="delete-form" action="actions/delete.php">
-              <input type="hidden" name="id" value="<?= $row['id'] ?>">
+              <input type="hidden" name="id" class="form-delete-id">
             </form>
           </div>
         </div>
