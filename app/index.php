@@ -51,7 +51,7 @@ $service = new NoteService();
   </div>
 
   <div class="modal">
-    <form method="post">
+    <form action="api/store-or-update.php">
       <div class="modal-content">
         <input id="id" name="id" type="hidden">
         <div class="input-field col s12">

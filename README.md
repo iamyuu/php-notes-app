@@ -4,13 +4,13 @@ Create and store your notes for later purpose!
 
 ## User stories
 
-- [ ] User can create a note
-- [ ] User can edit a note
+- [x] ~~User can create a note~~
+- [x] ~~User can edit a note~~
 - [x] ~~User can delete a note~~
 
 ## Bonus features
 
-- [ ] User can change background card.
+- [ ] User can change background card
 
 ## Prerequisites
 

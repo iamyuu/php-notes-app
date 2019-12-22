@@ -64,6 +64,51 @@ class NoteService
   }
 
   /**
+   * Store a newly created resource in storage.
+   *
+   * @param array $item
+   */
+  public function save(array $item)
+  {
+    try {
+      $sql = "INSERT INTO notes (title, note, color) VALUES (:title, :note, :color)";
+
+      $statement = $this->db->prepare($sql);
+      $statement->bindParam('title', $item['title'], PDO::PARAM_STR);
+      $statement->bindParam('note', $item['note'], PDO::PARAM_STR);
+      $statement->bindParam('color', $item['color'], PDO::PARAM_STR);
+      $statement->execute();
+
+      return "Successfully created";
+    } catch (PDOException $e) {
+      return "Error: [save] {$e->getMessage()}";
+    }
+  }
+
+  /**
+   * Update the specified resource in storage.
+   *
+   * @param array $item
+   */
+  public function update(array $item)
+  {
+    try {
+      $sql = "UPDATE notes SET id = :id, title = :title, note = :note, color = :color WHERE id = :id";
+
+      $statement = $this->db->prepare($sql);
+      $statement->bindParam('id', $item['id'], PDO::PARAM_INT);
+      $statement->bindParam('title', $item['title'], PDO::PARAM_STR);
+      $statement->bindParam('note', $item['note'], PDO::PARAM_STR);
+      $statement->bindParam('color', $item['color'], PDO::PARAM_STR);
+      $statement->execute();
+
+      return "Successfully updated";
+    } catch (PDOException $e) {
+      return "Error: [update] {$e->getMessage()}";
+    }
+  }
+
+  /**
    * Remove the specified resource from storage.
    *
    * @param int $id
