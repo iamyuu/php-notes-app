@@ -14,7 +14,7 @@ const add = () => {
 }
 
 const show = id => {
-  $.getJSON(`/api/single.php?id=${id}`, ({ data }) => {
+  $.getJSON(`/actions/get.php?id=${id}`, ({ data }) => {
     setForm(data)
     $('.modal').modal('open')
   })

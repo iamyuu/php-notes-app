@@ -8,6 +8,4 @@ $result = !$_REQUEST['id']
   ? $service->save($_REQUEST)
   : $service->update($_REQUEST);
 
-echo json_encode(['message' => $result]);
-
 header('Location: /');

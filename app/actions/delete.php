@@ -3,7 +3,6 @@
 require '../common/service.php';
 
 $service = new NoteService();
+$service->remove($_REQUEST['id']);
 
-echo json_encode([
-  'message' => $service->remove($_REQUEST['id'])
-]);
+header('Location: /');

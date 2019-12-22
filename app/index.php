@@ -35,7 +35,7 @@ $service = new NoteService();
               <i class="material-icons <?= $isHaveColor ?>">delete</i>
             </div>
 
-            <form class="delete-form" action="api/delete.php">
+            <form class="delete-form" action="actions/delete.php">
               <input type="hidden" name="id" value="<?= $row['id'] ?>">
             </form>
           </div>
@@ -51,7 +51,7 @@ $service = new NoteService();
   </div>
 
   <div class="modal">
-    <form action="api/store-or-update.php">
+    <form action="actions/store-or-update.php">
       <div class="modal-content">
         <input id="id" name="id" type="hidden">
         <div class="input-field col s12">
